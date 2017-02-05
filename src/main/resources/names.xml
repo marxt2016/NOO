@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<personsdata>
+    <persons>
+        <person>
+            <type>staff</type>
+            <first>Тестовый</first>
+            <last>Тестовый</last>
+            <middle>Тестовый</middle>
+            <bday>02021990</bday>
+        </person>
+        <person>
+            <type>student</type>
+            <first>ТестовыйСтудент</first>
+            <last>ТестовыйСтудент</last>
+            <middle>ТестовыйСтудент</middle>
+            <bday>12021990</bday>
+        </person>
+    </persons>
+</personsdata>

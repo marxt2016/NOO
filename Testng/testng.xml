@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Noo Suite">
+	<parameter name="url" value="http://dev.noo.su" />
+	<listeners>
+		<listener class-name="core.testng.Listener"/>
+		<listener class-name="org.testng.reporters.EmailableReporter" />
+
+	</listeners>
+
+	<test verbose="1" name="Chrome_Test" annotations="JDK">
+		<parameter name="browser" value="chrome" />
+
+		<groups>
+			<run>
+				<include name = "functionality"/>
+			</run>
+		</groups>
+
+		<classes>
+			<class name="tests.CreateStaffPositiveSuite"/>
+		</classes>
+	</test>
+
+</suite>
