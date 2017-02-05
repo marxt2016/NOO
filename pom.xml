@@ -7,7 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <first>Noo</first>
+  <name>Noo</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -44,11 +44,11 @@
         <version>2.19.1</version>
         <configuration>
           <systemProperties>
-            <rail.commerce.browser>${browser.type}</rail.commerce.browser>
+            <browser>${browser.type}</browser>
           </systemProperties>
           <argLine>-Dfile.encoding=UTF-8</argLine>
           <suiteXmlFiles>
-            <suiteXmlFile>testNG/testng.xml</suiteXmlFile>
+            <suiteXmlFile>testng/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
