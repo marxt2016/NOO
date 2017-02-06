@@ -41,5 +41,28 @@ public class Steps {
                 allPersons.get("staff").get(3) );
     }
 
+    public static String loginWithoutPassword() throws Exception {
+        LoginScreen login = new LoginScreen();
+        return login.emptyLoginPassword(allLogins.get("myuser").get(0));
+    }
+
+    public static String loginWithoutUsername() throws Exception {
+        LoginScreen login = new LoginScreen();
+        return login.emptyLoginUsername(allLogins.get("myuser").get(1));
+    }
+
+    public static String loginWithIncorrectPassword() throws Exception {
+        LoginScreen login = new LoginScreen();
+
+        return login.incorrectLoginPassword(allLogins.get("myuser").get(0), allLogins.get("faultyUser").get(1));
+    }
+
+    public static String loginWithIncorrectUsername() throws Exception {
+        Reporter.log("Logged in with the username  " + allLogins.get("faultyUser").get(0) + allLogins.get("myuser").get(1), true);
+        LoginScreen login = new LoginScreen();
+        return login.incorrectLoginUsername(allLogins.get("faultyUser").get(0),allLogins.get("myuser").get(1));
+    }
+
+
 
 }

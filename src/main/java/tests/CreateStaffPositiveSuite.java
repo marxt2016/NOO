@@ -36,22 +36,16 @@ public class CreateStaffPositiveSuite {
 	@Test(groups = {"functionality"})
 	public void loginPositive() throws Exception{
         //test validates personal page header with user pict is displayed
-        //Assert.assertTrue(Steps.loginTo().headerCheck());
-        Steps.loginTo();
-        Assert.assertTrue(Steps.fillOut());
-        Thread.sleep(2000);
+        Assert.assertTrue(Steps.loginTo().headerCheck());
 	}
 
-//    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
-//    public void changeAddress() throws Exception {
-//        //test validates address is changed
-//        LandingScreen personal = Steps.loginAndOpenSettins() ;
-//        personal.settingsClick();
-//        String valueForComparison = personal.changeAddress();
-//        Thread.sleep(3000);
-//        Assert.assertTrue(personal.validateChanges(valueForComparison, personal.getStreet1(), personal.getEditAddress()));
-//
-//   }
+    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
+    public void createStaff() throws Exception {
+        //test validates employee is created
+        Steps.loginTo();
+        Assert.assertTrue(Steps.fillOut());
+
+   }
 //
 //    @Test(groups = {"functionality"} , dependsOnMethods = { "loginPositive" })
 //    public void changePhone() throws Exception {

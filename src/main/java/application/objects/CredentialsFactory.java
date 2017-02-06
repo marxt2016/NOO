@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Olga_Melnikova on 11/12/2016.
@@ -37,16 +38,16 @@ public class CredentialsFactory {
         return hmap;
     }
 //    public static void main (String args[]) throws Exception{
-//        Persons set = generateSet();
+//        Credentials set = generateSet();
 //        HashMap<String, List<String>> hmap = new HashMap<String, List<String>>();
 //        List<User> allUsers= set.getUsers();
 //        System.out.println(set.getUsers());
 //        for (User u:allUsers){
 //            List<String> list = new ArrayList<>();
-//            list.add(u.getLast());
-//            list.add(u.getMiddle());
-//            list.add(u.getBday());
-//            hmap.put(u.getFirst(),list);
+//            list.add(u.getUsername());
+//            list.add(u.getPassword());
+//            list.add(u.getSystemName());
+//            hmap.put(u.getName(), list);
 //        }
 //        System.out.println(hmap.get("admin"));
 //        for ( Map.Entry<String, List<String>> entry : hmap.entrySet()) {

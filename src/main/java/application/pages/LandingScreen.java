@@ -55,7 +55,7 @@ public class LandingScreen extends AbstractScreen {
         create.click();
         Reporter.log("Clicked on Create new Employee", true);
 
-        lastN.sendKeys(fname +Double.toString(Math.random()).substring(2,4));
+        lastN.sendKeys(fname +Double.toString(Math.random()).substring(1,5));
         String value = lastN.getAttribute("value");
         Reporter.log("Filled Firstname with value = " + value, true);
 
@@ -79,7 +79,7 @@ public class LandingScreen extends AbstractScreen {
             Reporter.log("List contains new item = " + value, true);
         }else{Reporter.log("New item wasn't found", true);}
 
-       Reporter.log("value = " +Driver.getInstance().findElement(By.partialLinkText(value)).toString(), true);
+       Reporter.log("value = " +Driver.getInstance().findElement(By.partialLinkText(value)).getText(), true);
         return result;
 
     }
