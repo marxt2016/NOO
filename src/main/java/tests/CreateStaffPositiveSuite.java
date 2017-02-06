@@ -46,6 +46,13 @@ public class CreateStaffPositiveSuite {
         Assert.assertTrue(Steps.fillOut());
 
    }
+
+    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
+    public void logout() throws Exception {
+        //test validates logout is successful
+        Assert.assertTrue(Steps.loginTo().logout().checkLoginScreenIsOpened());
+
+    }
 //
 //    @Test(groups = {"functionality"} , dependsOnMethods = { "loginPositive" })
 //    public void changePhone() throws Exception {

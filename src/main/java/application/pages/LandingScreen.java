@@ -16,6 +16,10 @@ public class LandingScreen extends AbstractScreen {
     @FindBy(xpath="//div[3]/div/div")
     private WebElement userPict;
 
+    @FindBy(xpath="html/body/div[2]/div/div/div[2]")
+    private WebElement logout;
+
+
     @FindBy(xpath="/html/body/div/div/div[1]/div[2]/div[2]/div[1]/div[2]/div")
     private WebElement list;
 
@@ -60,13 +64,13 @@ public class LandingScreen extends AbstractScreen {
         Reporter.log("Filled Firstname with value = " + value, true);
 
         firstN.sendKeys(lname);
-        Reporter.log("Filled Lastname with value = " + lname, true);
+        Reporter.log("Filled Lastname with value = " + firstN.getAttribute("value"), true);
 
         middleN.sendKeys(mname);
-        Reporter.log("Filled Middlename with value = " + mname, true);
+        Reporter.log("Filled Middlename with value = " + middleN.getAttribute("value"), true);
 
         birthday.sendKeys(bday);
-        Reporter.log("Filled Birthday with value = " + bday, true);
+        Reporter.log("Filled Birthday with value = " + birthday.getAttribute("value"), true);
 
         sex.click();
         man.click();
@@ -83,6 +87,14 @@ public class LandingScreen extends AbstractScreen {
         return result;
 
     }
+
+    public LoginScreen logout () {
+        userPict.click();
+        logout.click();
+        Reporter.log("Click on logout.", true);
+        return new LoginScreen();
+    }
+
 //    public String changeAddress () {
 //        editAddress.click();
 //        WaitForVisibility.isElementLoaded(street1);

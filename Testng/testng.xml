@@ -19,7 +19,7 @@
 
 		<classes>
 			<class name="tests.CreateStaffPositiveSuite"/>
-			<class name="tests.LoginNegativeSuite"/>
+			<!--<class name="tests.LoginNegativeSuite"/>-->
 		</classes>
 	</test>
 

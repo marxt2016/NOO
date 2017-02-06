@@ -58,7 +58,7 @@ public class Steps {
     }
 
     public static String loginWithIncorrectUsername() throws Exception {
-        Reporter.log("Logged in with the username  " + allLogins.get("faultyUser").get(0) + allLogins.get("myuser").get(1), true);
+
         LoginScreen login = new LoginScreen();
         return login.incorrectLoginUsername(allLogins.get("faultyUser").get(0),allLogins.get("myuser").get(1));
     }

@@ -28,17 +28,20 @@ public class LoginScreen extends AbstractScreen {
         return new LandingScreen();
     }
 
+    public boolean checkLoginScreenIsOpened(){
+        return user.isDisplayed();
+    }
     public String emptyLogin(){
         loginButton.click();
         WaitForVisibility.isElementLoaded(errorMessage);
-        Reporter.log("The error message is displayed " + errorMessage.getText(), true);
+        Reporter.log("Empty fields for login, the error message is displayed " + errorMessage.getText(), true);
         return errorMessage.getText();
     }
     public String emptyLoginPassword(String userName){
         user.sendKeys(userName);
         loginButton.click();
         WaitForVisibility.isElementLoaded(errorMessage);
-        Reporter.log("The error message is displayed " + errorMessage.getText(), true);
+        Reporter.log("Only username is specified, password field is empty. The error message is displayed " + errorMessage.getText(), true);
         user.clear();
         return errorMessage.getText();
     }
@@ -47,7 +50,7 @@ public class LoginScreen extends AbstractScreen {
         password.sendKeys(pass);
         loginButton.click();
         WaitForVisibility.isElementLoaded(errorMessage);
-        Reporter.log("The error message is displayed " + errorMessage.getText(), true);
+        Reporter.log("Only password is specified, username field is empty. The error message is displayed " + errorMessage.getText(), true);
         password.clear();
         return errorMessage.getText();
     }
@@ -57,6 +60,8 @@ public class LoginScreen extends AbstractScreen {
         password.sendKeys(pass);
         loginButton.click();
         WaitForVisibility.isElementLoaded(errorMessage);
+        Reporter.log("Username provided =  " + user.getAttribute("value"), true);
+        Reporter.log("Password provided =  " + pass, true);
         Reporter.log("The error message is displayed " + errorMessage.getText(), true);
         user.clear();
         password.clear();
@@ -68,6 +73,8 @@ public class LoginScreen extends AbstractScreen {
         password.sendKeys(pass);
         loginButton.click();
         WaitForVisibility.isElementLoaded(errorMessage);
+        Reporter.log("Username provided =  " + user.getAttribute("value"), true);
+        Reporter.log("Password provided =  " + pass, true);
         Reporter.log("The error message is displayed " + errorMessage.getText(), true);
         password.clear();
         user.clear();
