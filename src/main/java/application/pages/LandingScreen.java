@@ -23,7 +23,9 @@ public class LandingScreen extends AbstractScreen {
     @FindBy(xpath="/html/body/div/div/div[1]/div[2]/div[2]/div[1]/div[2]/div")
     private WebElement list;
 
-    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[1]/div")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[2]/div[1]/div")
+//  create for the staff                 .//*[@id='root']/div/div[1]/div[2]/div[1]/div
+
     private WebElement create;
 
     @FindBy(id="lastName")
@@ -43,6 +45,12 @@ public class LandingScreen extends AbstractScreen {
 
     @FindBy(xpath="html/body/div[3]/div/div/div[1]")
     private WebElement man;
+
+    @FindBy(xpath="//div[5]/div/div/div/div/div/input")
+    private WebElement citizen;
+
+    @FindBy(xpath="html/body/div[3]/div/div/div")
+    private WebElement Albania;
 
     @FindBy(xpath="//button[@type='submit']")
     private WebElement submit;
@@ -74,19 +82,25 @@ public class LandingScreen extends AbstractScreen {
 
         sex.click();
         man.click();
+        citizen.sendKeys("Албания");
+        Thread.sleep(1000);
+        Albania.click();
         submit.click();
+
 
         Reporter.log("Clicked on Submit", true);
 
         if (Driver.getInstance().findElement(By.partialLinkText(value)).isDisplayed()){
             result = true;
             Reporter.log("List contains new item = " + value, true);
+            Driver.getInstance().findElement(By.partialLinkText(value)).click();
+            Driver.getInstance().findElement(By.partialLinkText(value)).click();
         }else{Reporter.log("New item wasn't found", true);}
-
-       Reporter.log("value = " +Driver.getInstance().findElement(By.partialLinkText(value)).getText(), true);
         return result;
 
     }
+
+
 
     public LoginScreen logout () {
         userPict.click();
@@ -95,20 +109,9 @@ public class LandingScreen extends AbstractScreen {
         return new LoginScreen();
     }
 
-//    public String changeAddress () {
-//        editAddress.click();
-//        WaitForVisibility.isElementLoaded(street1);
-//        String initialValue = street1.getAttribute("value");
-//        Reporter.log("Opened Address editing form", true);
-//        Reporter.log("Initial street value was = " + street1.getAttribute("value"), true);
-//        street1.clear();
-//        street1.sendKeys(1 + Double.toString(Math.random()).substring(2,4));
-//        Reporter.log("New street value is = " + street1.getAttribute("value"), true);
-//        saveAddressChanges.click();
-//        Reporter.log("Changes are saved", true);
-//        return initialValue;
-//    }
-//
+
+
+
 //    public boolean validateChanges (String initialValue, WebElement elementToCompare, WebElement formToOpen ){
 //        Boolean result = true;
 //        formToOpen.click();
@@ -119,26 +122,5 @@ public class LandingScreen extends AbstractScreen {
 //        return result;
 //    }
 //
-//    public String changePhone () {
-//        editPhone.click();
-//        WaitForVisibility.isElementLoaded(phone);
-//        String initialValue = phone.getAttribute("value");
-//        Reporter.log("Initial phone value was = " + phone.getAttribute("value"), true);
-//        phone.clear();
-//        phone.sendKeys("92790421" + Double.toString(Math.random()).substring(2,4));
-//        Reporter.log("New street value is = " + phone.getAttribute("value"), true);
-//        savePhoneChanges.click();
-//        return initialValue;
-//    }
-//
-//    public String listOperations(){
-//        activity.click();
-//        startDate.clear();
-//        startDate.sendKeys("01/01/2015");
-//        endDate.clear();
-//        endDate.sendKeys("15/01/2015");
-//        search.click();
-//        Reporter.log("Results found " + searchResult.getText(), true);
-//        return  searchResult.getText();
-//    }
+
 }

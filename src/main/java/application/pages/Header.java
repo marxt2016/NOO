@@ -8,25 +8,25 @@ import org.testng.Reporter;
  * Created by Olga Melnikova on 20.01.2017.
  */
 public class Header extends AbstractScreen {
-    @FindBy(xpath="//a[contains(@href, '/structure')]")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[1]/a")
     private WebElement university;
 
-    @FindBy(xpath="//a[contains(@href, '/staff')]")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[2]/a")
     private WebElement staff;
 
-    @FindBy(xpath="//a[contains(@href, '/education')]")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[3]/a")
     private WebElement education;
 
-    @FindBy(xpath="//a[contains(@href, '/students')]")
+    @FindBy(xpath="//a[contains(text(),'Студенты')]")
     private WebElement students;
 
-    @FindBy(xpath="//a[contains(@href, '/jobmarket')]")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[5]/a")
     private WebElement jobmarket;
 
-    @FindBy(xpath="//a[contains(@href, '/settings')]")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[6]/a")
     private WebElement settings;
 
-    @FindBy(xpath="//div[3]/div/div")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/div[7]/a")
     private WebElement userPict;
 
     public void universityClick () {
@@ -35,6 +35,14 @@ public class Header extends AbstractScreen {
 
     }
 
+    public void studentsClick () throws Exception {
+
+        Thread.sleep(2000);
+        Reporter.log(students.getText(), true);
+        students.click();
+        Reporter.log("Navigated to students page", true);
+
+    }
 
 
 

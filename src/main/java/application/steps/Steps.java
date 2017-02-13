@@ -2,6 +2,7 @@ package application.steps;
 
 import application.objects.CredentialsFactory;
 import application.objects.PersonsFactory;
+import application.pages.Header;
 import application.pages.LoginScreen;
 import application.pages.LandingScreen;
 import core.driver.Driver;
@@ -22,10 +23,11 @@ public class Steps {
     public static LandingScreen loginTo() throws Exception {
         LoginScreen login = new LoginScreen();
         Thread.sleep(1000);
-        LandingScreen landing = login.login(allLogins.get("myuser").get(0), allLogins.get("myuser").get(1));
+        //LandingScreen landing = login.login(allLogins.get("myuser").get(0), allLogins.get("myuser").get(1));
+        LandingScreen landing = login.login(allLogins.get("usertestWork").get(0), allLogins.get("usertestWork").get(1));
 
         Driver.getInstance().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        Reporter.log("Logged in with the username  " + allLogins.get("myuser").get(0), true);
+        Reporter.log("Logged in with the username  " + allLogins.get("usertestWork").get(0), true);
         Reporter.log("Login assertion result = "+ landing.headerCheck(), true);
 
         Driver.getInstance().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -61,6 +63,9 @@ public class Steps {
 
         LoginScreen login = new LoginScreen();
         return login.incorrectLoginUsername(allLogins.get("faultyUser").get(0),allLogins.get("myuser").get(1));
+    }
+    public static void clickOnStudents () throws Exception {
+        new Header().studentsClick();
     }
 
 

@@ -3,6 +3,7 @@ package tests;
 import application.objects.CredentialsFactory;
 import application.pages.LandingScreen;
 import application.pages.LoginScreen;
+import application.pages.StudentsScreen;
 import application.steps.Steps;
 import core.driver.Driver;
 import org.openqa.selenium.WebDriver;
@@ -33,24 +34,35 @@ public class CreateStaffPositiveSuite {
         driver.get(url);
     }
 
-	@Test(groups = {"functionality"})
-	public void loginPositive() throws Exception{
-        //test validates personal page header with user pict is displayed
-        Assert.assertTrue(Steps.loginTo().headerCheck());
-	}
+//	@Test(groups = {"functionality"})
+//	public void loginPositive() throws Exception{
+//        //test validates personal page header with user pict is displayed
+//        Assert.assertTrue(Steps.loginTo().headerCheck());
+//	}
+//
+//    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
+//    public void createStaff() throws Exception {
+//        //test validates employee is created
+//        Steps.loginTo();
+//        Assert.assertTrue(Steps.fillOut());
+//
+//   }
+//
+//    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
+//    public void logout() throws Exception {
+//        //test validates logout is successful
+//        Assert.assertTrue(Steps.loginTo().logout().checkLoginScreenIsOpened());
+//
+//    }
 
-    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
-    public void createStaff() throws Exception {
-        //test validates employee is created
+    @Test(groups = {"functionality"})
+    public void createStudent() throws Exception {
+        //test validates student is created
         Steps.loginTo();
-        Assert.assertTrue(Steps.fillOut());
-
-   }
-
-    @Test(groups = {"functionality"}, dependsOnMethods = { "loginPositive" })
-    public void logout() throws Exception {
-        //test validates logout is successful
-        Assert.assertTrue(Steps.loginTo().logout().checkLoginScreenIsOpened());
+        Steps.clickOnStudents();
+        Steps.fillOut();
+        new StudentsScreen().filloutResume();
+        Thread.sleep(1000);
 
     }
 //
