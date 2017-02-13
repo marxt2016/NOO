@@ -71,7 +71,7 @@ public class StudentsScreen extends AbstractScreen {
         specialty.sendKeys("Специальность 1");
 
         fromDate.clear();
-        fromDate.sendKeys("11112000");
+        fromDate.sendKeys("12112000");
         toDate.clear();
         toDate.sendKeys("11112005");
 
