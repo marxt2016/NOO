@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 /**
  * Created by Olga Melnikova on 01.02.2017.
  */
-public class StudentsScreen extends AbstractScreen {
+public class StudentsStaffDetailScreen extends AbstractScreen {
     @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[2]/div/div/div[2]/a")
     private WebElement resume;
 
@@ -162,9 +162,16 @@ public class StudentsScreen extends AbstractScreen {
 
 
     public void filloutResume () throws Exception {
+        filloutResumeEducation();
+        filloutResumeWork();
+        filloutResumeCourses();
+        filloutResumeResearches();
+        filloutResumePatents();
+    }
+
+    public void filloutResumeEducation () throws Exception {
         resume.click();
         WaitForVisibility.isElementLoaded(addFirst);
-//Education
         addFirst.click();
         category.click();
         fourthCategoryFromTop.click();
@@ -174,67 +181,91 @@ public class StudentsScreen extends AbstractScreen {
         Reporter.log("Set school name = " + school.getText(), true);
         specialty.clear();
         specialty.sendKeys("Специальность 1");
+        Reporter.log("Set specialty name = " + specialty.getText(), true);
 
         fromDate.clear();
         fromDate.sendKeys("12112000");
         toDate.clear();
         toDate.sendKeys("11112005");
+        Reporter.log("Set from and to dates = " + fromDate.getText() +", "+toDate.getText(), true);
 
         skills.clear();
         skills.sendKeys("Физика");
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
+
         buttonSubmit.click();
+        Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-//Work experience
+    }
+
+    public void filloutResumeWork () throws Exception {
         addSecond.click();
         compamyName.clear();
         compamyName.sendKeys("companyname");
+        Reporter.log("Set company name = " + compamyName.getText(), true);
         position.clear();
         position.sendKeys("manager");
+        Reporter.log("Set position name = " + position.getText(), true);
         fromEmplDate.clear();
         fromEmplDate.sendKeys("12112005");
         toEmplDate.clear();
         toEmplDate.sendKeys("11112010");
+        Reporter.log("Set from and to dates = " + fromEmplDate.getText() +", "+toEmplDate.getText(), true);
         rate.clear();
         rate.sendKeys("10000");
+        Reporter.log("Set rate = " + rate.getText(), true);
         skills.sendKeys("Физика");
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
         buttonSubmit.click();
+        Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-//Courses
+    }
+
+    public void filloutResumeCourses () throws Exception {
         courses.click();
         addFirst.click();
         positionCourse.click();
+        Reporter.log("Set position name = " + positionsuggestFirst.getText(), true);
         positionsuggestFirst.click();
         courseName.clear();
         courseName.sendKeys("coursename");
+        Reporter.log("Set course name = " + courseName.getText(), true);
         courseLevel.click();
+        Reporter.log("Set course level = " + courseLevelSuggest.getText(), true);
         courseLevelSuggest.click();
         courseHours.clear();
         courseHours.sendKeys("1200");
+        Reporter.log("Set course hours = " + courseHours.getText(), true);
         skillsCourse.sendKeys("Физика");
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
         buttonSubmit.click();
+        Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-//Researches
+    }
+
+    public void filloutResumeResearches () throws Exception {
         researches.click();
         addSecond.click();
         pubType.click();
         pubTypeSuggest.click();
         pubName.clear();
         pubName.sendKeys("publication name");
+        Reporter.log("Set publication name = " + pubName.getText(), true);
         pubDate.clear();
         pubDate.sendKeys("11111999");
+        Reporter.log("Set publication date = " + pubDate.getText(), true);
         pubIsbn.clear();
         pubIsbn.sendKeys("123-/''$%^&*@!(){} QWERT");
+        Reporter.log("Set publication isbn = " + pubIsbn.getText(), true);
         pubPages.clear();
         pubPages.sendKeys("123");
+        Reporter.log("Set publication pages = " + pubPages.getText(), true);
         pubLanguages.click();
         pubLanguagesSuggest1.click();
         pubLanguagesSuggest2.click();
@@ -250,15 +281,21 @@ public class StudentsScreen extends AbstractScreen {
             skillsSuggest.click();
         }
         buttonSubmit.click();
+        Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-//Patents
+    }
+
+    public void filloutResumePatents () throws Exception {
         patents.click();
         addFirst.click();
         patentName.clear();
         patentName.sendKeys("patent name");
+        Reporter.log("Set patent name = " + patentName.getText(), true);
         patentNumber.clear();
         patentNumber.sendKeys("123!@#^%^@$(^^%())<>");
+        Reporter.log("Set patent number = " + patentNumber.getText(), true);
         patentDate.sendKeys("11112010");
+        Reporter.log("Set patent date = " + patentDate.getText(), true);
         patentPurpose.click();
         patentPurposeSuggest.click();
         patentOwner.sendKeys("test");
@@ -269,8 +306,8 @@ public class StudentsScreen extends AbstractScreen {
             skillsSuggest.click();
         }
         buttonSubmit.click();
+        Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-
     }
 
 }

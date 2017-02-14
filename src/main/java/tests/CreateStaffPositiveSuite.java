@@ -1,13 +1,10 @@
 package tests;
 
 import application.objects.CredentialsFactory;
-import application.pages.LandingScreen;
-import application.pages.LoginScreen;
-import application.pages.StudentsScreen;
+import application.pages.StudentsStaffDetailScreen;
 import application.steps.Steps;
 import core.driver.Driver;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -61,7 +58,7 @@ public class CreateStaffPositiveSuite {
         Steps.loginTo();
        // Steps.clickOnStudents();
         Steps.fillOut();
-        new StudentsScreen().filloutResume();
+        new StudentsStaffDetailScreen().filloutResume();
         Thread.sleep(1000);
 
     }
