@@ -59,7 +59,7 @@ public class CreateStaffPositiveSuite {
     public void createStudent() throws Exception {
         //test validates student is created
         Steps.loginTo();
-        Steps.clickOnStudents();
+       // Steps.clickOnStudents();
         Steps.fillOut();
         new StudentsScreen().filloutResume();
         Thread.sleep(1000);
