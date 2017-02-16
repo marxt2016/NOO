@@ -161,15 +161,42 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
 
 
 
-    public void filloutResume () throws Exception {
-        filloutResumeEducation();
-        filloutResumeWork();
-        filloutResumeCourses();
-        filloutResumeResearches();
-        filloutResumePatents();
+    public void filloutResume (
+            String schoolNameValue,
+            String specialtyValue,
+            String fromSchoolDateValue,
+            String toSchoolDateValue,
+            String skillsSchoolValue,
+            String companyNameValue,
+            String positionValue,
+            String fromDateValue,
+            String toDateValue,
+            String rateValue,
+            String skillsValue,
+            String courseNameValue,
+            String courseHoursValue,
+            String courseSkillsValue,
+            String pubNameValue,
+            String pubDateValue,
+            String pubIsbnValue,
+            String pubPagesValue,
+            String pubCoworkerValue,
+            String pubSkillsValue,
+            String patentNameValue,
+            String patentNumberValue,
+            String patentDateValue,
+            String patentOwnerValue,
+            String patentCoworkerValue,
+            String patentSkillsValue
+            ) throws Exception {
+        filloutResumeEducation(schoolNameValue, specialtyValue, fromSchoolDateValue, toSchoolDateValue,skillsSchoolValue);
+        filloutResumeWork(companyNameValue, positionValue, fromDateValue, toDateValue, rateValue, skillsValue);
+        filloutResumeCourses(courseNameValue, courseHoursValue, courseSkillsValue);
+        filloutResumeResearches(pubNameValue, pubDateValue, pubIsbnValue, pubPagesValue, pubCoworkerValue, pubSkillsValue);
+        filloutResumePatents(patentNameValue, patentNumberValue, patentDateValue, patentOwnerValue, patentCoworkerValue, patentSkillsValue);
     }
 
-    public void filloutResumeEducation () throws Exception {
+    public void filloutResumeEducation (String schoolNameValue, String specialtyValue, String fromDateValue, String toDateValue, String skillsValue) throws Exception {
         resume.click();
         WaitForVisibility.isElementLoaded(addFirst);
         addFirst.click();
@@ -177,20 +204,20 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         fourthCategoryFromTop.click();
         Reporter.log("Click fourth category from top in the suggest list.", true);
         school.clear();
-        school.sendKeys("Самарский университет");
-        Reporter.log("Set school name = " + school.getText(), true);
+        school.sendKeys(schoolNameValue);
+        Reporter.log("Set school name = " + school.getAttribute("value"), true);
         specialty.clear();
-        specialty.sendKeys("Специальность 1");
-        Reporter.log("Set specialty name = " + specialty.getText(), true);
+        specialty.sendKeys(specialtyValue);
+        Reporter.log("Set specialty name = " + specialty.getAttribute("value"), true);
 
         fromDate.clear();
-        fromDate.sendKeys("12112000");
+        fromDate.sendKeys(fromDateValue);
         toDate.clear();
-        toDate.sendKeys("11112005");
-        Reporter.log("Set from and to dates = " + fromDate.getText() +", "+toDate.getText(), true);
+        toDate.sendKeys(toDateValue);
+        Reporter.log("Set from and to dates = " + fromDate.getAttribute("value") +", "+toDate.getAttribute("value"), true);
 
         skills.clear();
-        skills.sendKeys("Физика");
+        skills.sendKeys(skillsValue);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -200,23 +227,23 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
     }
 
-    public void filloutResumeWork () throws Exception {
+    public void filloutResumeWork (String companyNameValue, String positionValue, String fromDateValue, String toDateValue, String rateValue, String skillsValue) throws Exception {
         addSecond.click();
         compamyName.clear();
-        compamyName.sendKeys("companyname");
-        Reporter.log("Set company name = " + compamyName.getText(), true);
+        compamyName.sendKeys(companyNameValue);
+        Reporter.log("Set company name = " + compamyName.getAttribute("value"), true);
         position.clear();
-        position.sendKeys("manager");
-        Reporter.log("Set position name = " + position.getText(), true);
+        position.sendKeys(positionValue);
+        Reporter.log("Set position name = " + position.getAttribute("value"), true);
         fromEmplDate.clear();
-        fromEmplDate.sendKeys("12112005");
+        fromEmplDate.sendKeys(fromDateValue);
         toEmplDate.clear();
-        toEmplDate.sendKeys("11112010");
-        Reporter.log("Set from and to dates = " + fromEmplDate.getText() +", "+toEmplDate.getText(), true);
+        toEmplDate.sendKeys(toDateValue);
+        Reporter.log("Set from and to dates = " + fromEmplDate.getAttribute("value") +", "+toEmplDate.getAttribute("value"), true);
         rate.clear();
-        rate.sendKeys("10000");
-        Reporter.log("Set rate = " + rate.getText(), true);
-        skills.sendKeys("Физика");
+        rate.sendKeys(rateValue);
+        Reporter.log("Set rate = " + rate.getAttribute("value"), true);
+        skills.sendKeys(skillsValue);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -225,22 +252,22 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
     }
 
-    public void filloutResumeCourses () throws Exception {
+    public void filloutResumeCourses (String courseNameValue, String courseHoursValue, String courseSkillsValue) throws Exception {
         courses.click();
         addFirst.click();
         positionCourse.click();
-        Reporter.log("Set position name = " + positionsuggestFirst.getText(), true);
+        Reporter.log("Set position name = " + positionsuggestFirst.getAttribute("value"), true);
         positionsuggestFirst.click();
         courseName.clear();
-        courseName.sendKeys("coursename");
-        Reporter.log("Set course name = " + courseName.getText(), true);
+        courseName.sendKeys(courseNameValue);
+        Reporter.log("Set course name = " + courseName.getAttribute("value"), true);
         courseLevel.click();
         Reporter.log("Set course level = " + courseLevelSuggest.getText(), true);
         courseLevelSuggest.click();
         courseHours.clear();
-        courseHours.sendKeys("1200");
-        Reporter.log("Set course hours = " + courseHours.getText(), true);
-        skillsCourse.sendKeys("Физика");
+        courseHours.sendKeys(courseHoursValue);
+        Reporter.log("Set course hours = " + courseHours.getAttribute("value"), true);
+        skillsCourse.sendKeys(courseSkillsValue);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -249,23 +276,23 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
     }
 
-    public void filloutResumeResearches () throws Exception {
+    public void filloutResumeResearches (String pubNameValue, String pubDateValue, String pubIsbnValue, String pubPagesValue, String pubCoworkerValue, String pubSkillsValue) throws Exception {
         researches.click();
         addSecond.click();
         pubType.click();
         pubTypeSuggest.click();
         pubName.clear();
-        pubName.sendKeys("publication name");
-        Reporter.log("Set publication name = " + pubName.getText(), true);
+        pubName.sendKeys(pubNameValue);
+        Reporter.log("Set publication name = " + pubName.getAttribute("value"), true);
         pubDate.clear();
-        pubDate.sendKeys("11111999");
-        Reporter.log("Set publication date = " + pubDate.getText(), true);
+        pubDate.sendKeys(pubDateValue);
+        Reporter.log("Set publication date = " + pubDate.getAttribute("value"), true);
         pubIsbn.clear();
-        pubIsbn.sendKeys("123-/''$%^&*@!(){} QWERT");
-        Reporter.log("Set publication isbn = " + pubIsbn.getText(), true);
+        pubIsbn.sendKeys(pubIsbnValue);
+        Reporter.log("Set publication isbn = " + pubIsbn.getAttribute("value"), true);
         pubPages.clear();
-        pubPages.sendKeys("123");
-        Reporter.log("Set publication pages = " + pubPages.getText(), true);
+        pubPages.sendKeys(pubPagesValue);
+        Reporter.log("Set publication pages = " + pubPages.getAttribute("value"), true);
         pubLanguages.click();
         pubLanguagesSuggest1.click();
         pubLanguagesSuggest2.click();
@@ -274,9 +301,9 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         robot.keyRelease(KeyEvent.VK_TAB);
 
         pubCoworkers.click();
-        pubCoworkers.sendKeys("Тестовый");
+        pubCoworkers.sendKeys(pubCoworkerValue);
         pubCoworkersSuggest.click();
-        skillsPub.sendKeys("Физика");
+        skillsPub.sendKeys(pubSkillsValue);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -285,23 +312,24 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
     }
 
-    public void filloutResumePatents () throws Exception {
+    public void filloutResumePatents (String patentNameValue, String patentNumberValue, String patentDateValue, String patentOwnerValue, String patentCoworkerValue, String patentSkillsValue) throws Exception {
         patents.click();
         addFirst.click();
         patentName.clear();
-        patentName.sendKeys("patent name");
-        Reporter.log("Set patent name = " + patentName.getText(), true);
+        patentName.sendKeys(patentNameValue);
+        Reporter.log("Set patent name = " + patentName.getAttribute("value"), true);
         patentNumber.clear();
-        patentNumber.sendKeys("123!@#^%^@$(^^%())<>");
-        Reporter.log("Set patent number = " + patentNumber.getText(), true);
-        patentDate.sendKeys("11112010");
-        Reporter.log("Set patent date = " + patentDate.getText(), true);
+        patentNumber.sendKeys(patentNumberValue);
+        Reporter.log("Set patent number = " + patentNumber.getAttribute("value"), true);
+        patentDate.sendKeys(patentDateValue);
+        Reporter.log("Set patent date = " + patentDate.getAttribute("value"), true);
         patentPurpose.click();
         patentPurposeSuggest.click();
-        patentOwner.sendKeys("test");
-        patentCoworkers.sendKeys("тестовый");
+        patentOwner.sendKeys(patentOwnerValue);
+        patentCoworkers.sendKeys(patentCoworkerValue);
+        Thread.sleep(1000);
         patentCoworkersSuggest.click();
-        skillsPatent.sendKeys("Математика");
+        skillsPatent.sendKeys(patentSkillsValue);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }

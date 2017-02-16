@@ -13,7 +13,7 @@ import java.util.List;
 public class PersonsFactory {
     public static PersonsData generateSet() throws Exception{
         Parser parser = new Parser();
-        File file = new File("./src/main/resources/names.xml");
+        File file = new File("./src/main/resources/persons.xml");
         PersonsData set = (PersonsData) parser.getObject(file, PersonsData.class);
         return set;
     }
@@ -30,6 +30,37 @@ public class PersonsFactory {
                 list.add(p.getLast());
                 list.add(p.getMiddle());
                 list.add(p.getBday());
+                list.add(p.getResumeEducationSchool());
+                list.add(p.getResumeEducationSpecialty());
+                list.add(p.getResumeEducationFromDate());
+                list.add(p.getResumeEducationToDate());
+                list.add(p.getResumeEducationSkills());
+                list.add(p.getResumeWorkCompany());
+                list.add(p.getResumeWorkPosition());
+                list.add(p.getResumeWorkFromDate());
+                list.add(p.getResumeWorkToDate());
+                list.add(p.getResumeWorkRate());
+                list.add(p.getResumeWorkSkills());
+                list.add(p.getResumeCourseName());
+                list.add(p.getResumeCourseHours());
+                list.add(p.getResumeCourseSkills());
+                list.add(p.getResumeDissName());
+                list.add(p.getResumeDissSpecialty());
+                list.add(p.getResumeDissYear());
+                list.add(p.getResumeDissConsultant());
+                list.add(p.getResumeDissSkills());
+                list.add(p.getResumePubName());
+                list.add(p.getResumePubDate());
+                list.add(p.getResumePubIsbn());
+                list.add(p.getResumePubPages());
+                list.add(p.getResumePubCoworker());
+                list.add(p.getResumePubSkills());
+                list.add(p.getResumePatentName());
+                list.add(p.getResumePatentNumber());
+                list.add(p.getResumePatentDate());
+                list.add(p.getResumePatentOwner());
+                list.add(p.getResumePatentCoworker());
+                list.add(p.getResumePatentSkills());
                 hmap.put(p.getType(), list);
             }
         }catch(Exception e){

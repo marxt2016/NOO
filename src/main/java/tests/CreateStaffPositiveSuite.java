@@ -41,7 +41,7 @@ public class CreateStaffPositiveSuite {
 //    public void createStaff() throws Exception {
 //        //test validates employee is created
 //        Steps.loginTo();
-//        Assert.assertTrue(Steps.fillOut());
+//        Assert.assertTrue(Steps.createPerson());
 //
 //   }
 //
@@ -57,8 +57,8 @@ public class CreateStaffPositiveSuite {
         //test validates student is created
         Steps.loginTo();
        // Steps.clickOnStudents();
-        Steps.fillOut();
-        new StudentsStaffDetailScreen().filloutResume();
+        Steps.createPerson();
+        Steps.fillOutResumeStep();
         Thread.sleep(1000);
 
     }

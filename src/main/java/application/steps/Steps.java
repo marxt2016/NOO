@@ -5,6 +5,7 @@ import application.objects.PersonsFactory;
 import application.pages.Header;
 import application.pages.LoginScreen;
 import application.pages.LandingScreen;
+import application.pages.StudentsStaffDetailScreen;
 import core.driver.Driver;
 import org.testng.Reporter;
 
@@ -34,7 +35,7 @@ public class Steps {
         return new LandingScreen();
     }
 
-    public static boolean fillOut() throws Exception {
+    public static boolean createPerson() throws Exception {
         LandingScreen landing = new LandingScreen();
 
         return landing.fillOutStaffDetails(allPersons.get("staff").get(0),
@@ -42,6 +43,38 @@ public class Steps {
                 allPersons.get("staff").get(2),
                 allPersons.get("staff").get(3) );
     }
+
+    public static void fillOutResumeStep() throws Exception{
+        StudentsStaffDetailScreen resume = new StudentsStaffDetailScreen();
+        resume.filloutResume(allPersons.get("staff").get(4),
+                allPersons.get("staff").get(5),
+                allPersons.get("staff").get(6),
+                allPersons.get("staff").get(7),
+                allPersons.get("staff").get(8),
+                allPersons.get("staff").get(9),
+                allPersons.get("staff").get(10),
+                allPersons.get("staff").get(11),
+                allPersons.get("staff").get(12),
+                allPersons.get("staff").get(13),
+                allPersons.get("staff").get(14),
+                allPersons.get("staff").get(15),
+                allPersons.get("staff").get(16),
+                allPersons.get("staff").get(17),
+                allPersons.get("staff").get(23),
+                allPersons.get("staff").get(24),
+                allPersons.get("staff").get(25),
+                allPersons.get("staff").get(26),
+                allPersons.get("staff").get(27),
+                allPersons.get("staff").get(28),
+                allPersons.get("staff").get(29),
+                allPersons.get("staff").get(30),
+                allPersons.get("staff").get(31),
+                allPersons.get("staff").get(32),
+                allPersons.get("staff").get(33),
+                allPersons.get("staff").get(34)
+                );
+    }
+
 
     public static String loginWithoutPassword() throws Exception {
         LoginScreen login = new LoginScreen();

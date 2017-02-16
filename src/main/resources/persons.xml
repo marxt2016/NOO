@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<personsdata>
+    <persons>
+        <person>
+            <type>staff</type>
+            <first>Тестовый</first>
+            <last>Тестовый</last>
+            <middle>Тестовый</middle>
+            <bday>02021990</bday>
+            <resumeEducationSchool>Самарский университет</resumeEducationSchool>;
+            <resumeEducationSpecialty>Специальность 1</resumeEducationSpecialty>
+            <resumeEducationFromDate>12112000</resumeEducationFromDate>
+            <resumeEducationToDate>11122005</resumeEducationToDate>
+            <resumeEducationSkills>Физика</resumeEducationSkills>
+            <resumeWorkCompany>Компания</resumeWorkCompany>
+            <resumeWorkPosition>ДолжностьПозиция</resumeWorkPosition>
+            <resumeWorkFromDate>11012006</resumeWorkFromDate>
+            <resumeWorkToDate>11112010</resumeWorkToDate>
+            <resumeWorkRate>100000</resumeWorkRate>
+            <resumeWorkSkills>Физика</resumeWorkSkills>
+            <resumeCourseName>ИмяКурса</resumeCourseName>
+            <resumeCourseHours>200</resumeCourseHours>
+            <resumeCourseSkills>Физика</resumeCourseSkills>
+            <resumeDissName>НазваниеДиссертации НазваниеДиссертации НазваниеДиссертации!"№%;,</resumeDissName>
+            <resumeDissSpecialty>Специальность-Диссертации</resumeDissSpecialty>
+            <resumeDissYear>2010</resumeDissYear>
+            <resumeDissConsultant>Тестовый</resumeDissConsultant>
+            <resumeDissSkills>Физика</resumeDissSkills>
+            <resumePubName>Название Публикации</resumePubName>
+            <resumePubDate>11012009</resumePubDate>
+            <resumePubIsbn>123-/''$%^\/*@!(){} QWERT</resumePubIsbn>
+            <resumePubPages>123</resumePubPages>
+            <resumePubCoworker>Тестовый</resumePubCoworker>
+            <resumePubSkills>Физика</resumePubSkills>
+            <resumePatentName>Название Патента</resumePatentName>
+            <resumePatentNumber>#7654284</resumePatentNumber>
+            <resumePatentDate>22062016</resumePatentDate>
+            <resumePatentOwner>Тестовый</resumePatentOwner>
+            <resumePatentCoworker>Тестовый</resumePatentCoworker>
+            <resumePatentSkills>Физика</resumePatentSkills>
+        </person>
+        <person>
+            <type>student</type>
+            <first>ТестовыйСтудент</first>
+            <last>ТестовыйСтудент</last>
+            <middle>ТестовыйСтудент</middle>
+            <bday>12021990</bday>
+        </person>
+    </persons>
+</personsdata>
