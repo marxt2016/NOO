@@ -1,6 +1,7 @@
 package tests;
 
 import application.objects.CredentialsFactory;
+import application.pages.PositionScreen;
 import application.pages.StudentsStaffDetailScreen;
 import application.steps.Steps;
 import core.driver.Driver;
@@ -51,17 +52,27 @@ public class CreateStaffPositiveSuite {
 //        Assert.assertTrue(Steps.loginTo().logout().checkLoginScreenIsOpened());
 //
 //    }
+//
+//    @Test(groups = {"functionality"})
+//    public void createStudent() throws Exception {
+//        //test validates student is created
+//        Steps.loginTo();
+//        Steps.clickOnStudents();
+//        Steps.createPerson();
+//        Steps.fillOutResumeStep();
+//        Thread.sleep(1000);
+//
+//    }
 
     @Test(groups = {"functionality"})
-    public void createStudent() throws Exception {
-        //test validates student is created
+    public void createPosition() throws Exception {
+        //test validates position is created
         Steps.loginTo();
-       // Steps.clickOnStudents();
-        Steps.createPerson();
-        Steps.fillOutResumeStep();
+        Steps.fillOutPositionStep();
         Thread.sleep(1000);
 
     }
+
 //
 //    @Test(groups = {"functionality"} , dependsOnMethods = { "loginPositive" })
 //    public void changePhone() throws Exception {

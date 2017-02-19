@@ -23,8 +23,8 @@ public class LandingScreen extends AbstractScreen {
     @FindBy(xpath="/html/body/div/div/div[1]/div[2]/div[2]/div[1]/div[2]/div")
     private WebElement list;
 
-    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[1]/div")
-//  create for the staff
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[2]/div[1]/div")
+//  create for the staff .//*[@id='root']/div/div[1]/div[2]/div[1]/div
     // create for student .//*[@id='root']/div/div[1]/div[2]/div[2]/div[1]/div
 
     private WebElement create;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<positionsdata>
+    <positions>
+        <position>
+            <type>manager</type>
+            <name>Менеджер</name>
+            <division>Продажи</division>
+            <skills>Физика</skills>
+        </position>
+        <position>
+            <type>lector</type>
+            <name>Преподаватель</name>
+            <division>Продажи</division>
+            <skills>Физика</skills>
+        </position>
+    </positions>
+</positionsdata>

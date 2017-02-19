@@ -2,10 +2,8 @@ package application.steps;
 
 import application.objects.CredentialsFactory;
 import application.objects.PersonsFactory;
-import application.pages.Header;
-import application.pages.LoginScreen;
-import application.pages.LandingScreen;
-import application.pages.StudentsStaffDetailScreen;
+import application.objects.PositionsFactory;
+import application.pages.*;
 import core.driver.Driver;
 import org.testng.Reporter;
 
@@ -20,6 +18,7 @@ public class Steps {
 
     public static final HashMap<String, List<String>> allLogins = CredentialsFactory.generateCredentialsSet();
     public static final HashMap<String, List<String>> allPersons = PersonsFactory.generatePersonsSet();
+    public static final HashMap<String, List<String>> allPositions = PositionsFactory.generatePositionsSet();
 
     public static LandingScreen loginTo() throws Exception {
         LoginScreen login = new LoginScreen();
@@ -101,6 +100,11 @@ public class Steps {
         new Header().studentsClick();
     }
 
-
+    public static void fillOutPositionStep() throws Exception {
+        PositionScreen position = new PositionScreen();
+        position.clickPositions();
+        position.fillOutPositionDetails(allPositions.get("manager").get(0), allPositions.get("manager").get(1), allPositions.get("manager").get(2));
+        position.addRequirements(allPositions.get("manager").get(2));
+    }
 
 }
