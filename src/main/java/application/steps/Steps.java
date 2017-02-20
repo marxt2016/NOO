@@ -34,18 +34,18 @@ public class Steps {
         return new LandingScreen();
     }
 
-    public static boolean createPerson() throws Exception {
+    public static boolean createPerson(String personType) throws Exception {
         LandingScreen landing = new LandingScreen();
 
         return landing.fillOutStaffDetails(allPersons.get("staff").get(0),
                 allPersons.get("staff").get(1),
                 allPersons.get("staff").get(2),
-                allPersons.get("staff").get(3) );
+                allPersons.get("staff").get(3), personType );
     }
 
-    public static void fillOutResumeStep() throws Exception{
+    public static boolean fillOutResumeStep() throws Exception{
         StudentsStaffDetailScreen resume = new StudentsStaffDetailScreen();
-        resume.filloutResume(allPersons.get("staff").get(4),
+        return resume.filloutResume(allPersons.get("staff").get(4),
                 allPersons.get("staff").get(5),
                 allPersons.get("staff").get(6),
                 allPersons.get("staff").get(7),
@@ -100,11 +100,11 @@ public class Steps {
         new Header().studentsClick();
     }
 
-    public static void fillOutPositionStep() throws Exception {
+    public static boolean fillOutPositionStep() throws Exception {
         PositionScreen position = new PositionScreen();
         position.clickPositions();
         position.fillOutPositionDetails(allPositions.get("manager").get(0), allPositions.get("manager").get(1), allPositions.get("manager").get(2));
-        position.addRequirements(allPositions.get("manager").get(2));
+        return position.addRequirements(allPositions.get("manager").get(2));
     }
 
 }

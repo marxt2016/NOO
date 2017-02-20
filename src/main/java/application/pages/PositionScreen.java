@@ -50,7 +50,18 @@ public class PositionScreen extends AbstractScreen {
     @FindBy(xpath=".//div[3]/div/div[2]/div/form/div[2]/button[1]")
     private WebElement positionSkillSubmit;
 
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[3]/div/div[2]")
+    private WebElement positionSkillAdded;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[2]/div/div/div[3]/a")
+    private WebElement candidatesLink;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[3]/div/div[1]")
+    private WebElement candidatesNumber;
+
+
+
     private boolean result = false;
+    private boolean resultNewSkill = false;
+    private boolean resultCandidatesFound = false;
 
     public void clickPositions(){
         positionLinkHeader.click();
@@ -81,7 +92,7 @@ public class PositionScreen extends AbstractScreen {
         return result;
     }
 
-    public void addRequirements(String pSkills) throws Exception{
+    public boolean addRequirements(String pSkills) throws Exception{
         positionRequirements.click();
         positionReqAdd.click();
         Reporter.log("Clicked on Add new skill-requirement to position", true);
@@ -91,10 +102,21 @@ public class PositionScreen extends AbstractScreen {
         }
         positionSkillSubmit.click();
         Reporter.log("Clicked on Submit", true);
+        if (positionSkillAdded.isDisplayed()){
+            resultNewSkill = true;
+            Reporter.log("New skill was  added to position = " + resultNewSkill, true);
+        }
+
+        Thread.sleep(2000);
+        candidatesLink.click();
         Thread.sleep(3000);
+        if (Integer.parseInt(candidatesNumber.getText().substring(0,1))>0){
+            resultCandidatesFound=true;
+            Reporter.log("Candidates number = " + candidatesNumber.getText().substring(0,1), true);
+        }
+
+        return resultCandidatesFound;
     }
-
-
 
 
 }

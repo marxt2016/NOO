@@ -159,9 +159,22 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
     @FindBy(xpath="html/body/div[2]/div/div[2]/div/form/div[2]/div[2]/div/div/div/div[1]/div/input")
     private WebElement skillsPatent;
 
+//new Item is present in the list
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/span")
+    private WebElement listItem;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[2]/div[2]/div/span")
+    private WebElement listItemPub;
 
 
-    public void filloutResume (
+    private boolean resultEducation = false;
+    private boolean resultWork = false;
+    private boolean resultCourses = false;
+    private boolean resultResearches = false;
+    private boolean resultPatents = false;
+    private boolean resultAll = false;
+
+
+    public boolean filloutResume (
             String schoolNameValue,
             String specialtyValue,
             String fromSchoolDateValue,
@@ -189,14 +202,18 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
             String patentCoworkerValue,
             String patentSkillsValue
             ) throws Exception {
-        filloutResumeEducation(schoolNameValue, specialtyValue, fromSchoolDateValue, toSchoolDateValue,skillsSchoolValue);
-        filloutResumeWork(companyNameValue, positionValue, fromDateValue, toDateValue, rateValue, skillsValue);
-        filloutResumeCourses(courseNameValue, courseHoursValue, courseSkillsValue);
-        filloutResumeResearches(pubNameValue, pubDateValue, pubIsbnValue, pubPagesValue, pubCoworkerValue, pubSkillsValue);
-        filloutResumePatents(patentNameValue, patentNumberValue, patentDateValue, patentOwnerValue, patentCoworkerValue, patentSkillsValue);
+        if (
+        filloutResumeEducation(schoolNameValue, specialtyValue, fromSchoolDateValue, toSchoolDateValue,skillsSchoolValue) &&
+        filloutResumeWork(companyNameValue, positionValue, fromDateValue, toDateValue, rateValue, skillsValue) &&
+        filloutResumeCourses(courseNameValue, courseHoursValue, courseSkillsValue) &&
+        filloutResumeResearches(pubNameValue, pubDateValue, pubIsbnValue, pubPagesValue, pubCoworkerValue, pubSkillsValue) &&
+        filloutResumePatents(patentNameValue, patentNumberValue, patentDateValue, patentOwnerValue, patentCoworkerValue, patentSkillsValue))
+            resultAll = true;
+            Reporter.log("Resume sections were filled out = " + resultAll , true);
+        return resultAll;
     }
 
-    public void filloutResumeEducation (String schoolNameValue, String specialtyValue, String fromDateValue, String toDateValue, String skillsValue) throws Exception {
+    public boolean filloutResumeEducation (String schoolNameValue, String specialtyValue, String fromDateValue, String toDateValue, String skillsValue) throws Exception {
         resume.click();
         WaitForVisibility.isElementLoaded(addFirst);
         addFirst.click();
@@ -225,9 +242,14 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
+        if (listItem.isDisplayed()){
+            resultEducation=true;
+        }
+        return resultEducation;
+
     }
 
-    public void filloutResumeWork (String companyNameValue, String positionValue, String fromDateValue, String toDateValue, String rateValue, String skillsValue) throws Exception {
+    public boolean filloutResumeWork (String companyNameValue, String positionValue, String fromDateValue, String toDateValue, String rateValue, String skillsValue) throws Exception {
         addSecond.click();
         compamyName.clear();
         compamyName.sendKeys(companyNameValue);
@@ -250,9 +272,13 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
+        if (listItem.isDisplayed()){
+            resultWork=true;
+        }
+        return resultWork;
     }
 
-    public void filloutResumeCourses (String courseNameValue, String courseHoursValue, String courseSkillsValue) throws Exception {
+    public boolean filloutResumeCourses (String courseNameValue, String courseHoursValue, String courseSkillsValue) throws Exception {
         courses.click();
         addFirst.click();
         positionCourse.click();
@@ -274,9 +300,13 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
+        if (listItem.isDisplayed()){
+            resultCourses=true;
+        }
+        return resultCourses;
     }
 
-    public void filloutResumeResearches (String pubNameValue, String pubDateValue, String pubIsbnValue, String pubPagesValue, String pubCoworkerValue, String pubSkillsValue) throws Exception {
+    public boolean filloutResumeResearches (String pubNameValue, String pubDateValue, String pubIsbnValue, String pubPagesValue, String pubCoworkerValue, String pubSkillsValue) throws Exception {
         researches.click();
         addSecond.click();
         pubType.click();
@@ -310,9 +340,13 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
+        if (listItemPub.isDisplayed()){
+            resultResearches=true;
+        }
+        return resultResearches;
     }
 
-    public void filloutResumePatents (String patentNameValue, String patentNumberValue, String patentDateValue, String patentOwnerValue, String patentCoworkerValue, String patentSkillsValue) throws Exception {
+    public boolean filloutResumePatents (String patentNameValue, String patentNumberValue, String patentDateValue, String patentOwnerValue, String patentCoworkerValue, String patentSkillsValue) throws Exception {
         patents.click();
         addFirst.click();
         patentName.clear();
@@ -336,6 +370,10 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
+        if (listItem.isDisplayed()){
+            resultPatents=true;
+        }
+        return resultPatents;
     }
 
 }

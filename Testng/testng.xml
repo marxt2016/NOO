@@ -20,7 +20,7 @@
 		</groups>
 
 		<classes>
-			<class name="tests.CreateStaffPositiveSuite"/>
+			<class name="tests.CreateInstancesPositiveSuite"/>
 			<!--<class name="tests.LoginNegativeSuite"/>-->
 		</classes>
 	</test>

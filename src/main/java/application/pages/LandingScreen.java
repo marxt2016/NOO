@@ -24,10 +24,10 @@ public class LandingScreen extends AbstractScreen {
     private WebElement list;
 
     @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[2]/div[1]/div")
-//  create for the staff .//*[@id='root']/div/div[1]/div[2]/div[1]/div
-    // create for student .//*[@id='root']/div/div[1]/div[2]/div[2]/div[1]/div
+    private WebElement createStudent;
 
-    private WebElement create;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div[1]/div")
+    private WebElement createStaff;
 
     @FindBy(id="lastName")
     private WebElement lastN;
@@ -64,8 +64,15 @@ public class LandingScreen extends AbstractScreen {
 
     }
 
-    public boolean fillOutStaffDetails (String fname, String lname, String mname, String bday ) throws Exception {
-        create.click();
+    public boolean fillOutStaffDetails (String fname, String lname, String mname, String bday, String staffOrStudent ) throws Exception {
+
+        switch(staffOrStudent) {
+            case "staff": createStaff.click();
+                break;
+            case "student":createStudent.click();
+                break;
+        }
+
         Reporter.log("Clicked on Create new Employee", true);
 
         lastN.sendKeys(fname +Double.toString(Math.random()).substring(1,5));
