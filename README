@@ -9,4 +9,4 @@ http://maven.apache.org/guides/getting-started/windows-prerequisites.html
 4. Run test suite from this location, for example  mvn test -f D:\workspace\noo
 
 Project output files are located in the target folder.
-Report can be found in the surefire-reports folder->emaible-report.html
+Report can be found in the folder Noo->Target->surefire-reports->emaible-report.html

@@ -392,7 +392,7 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_TAB);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         pubCoworkers.click();
         pubCoworkers.sendKeys(pubCoworkerValue);
         Thread.sleep(1000);
