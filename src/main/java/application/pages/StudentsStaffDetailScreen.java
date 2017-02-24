@@ -28,10 +28,16 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
     @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[2]/div/div/div[5]/a")
     private WebElement patents;
 
-    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[1]/span")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[1]/div[1]/span")
     private WebElement addFirst;
 
-    @FindBy(xpath="//div[@id='root']/div/div/div[2]/div/div/div[3]/div/div[2]/div/span")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div/div[1]/span")
+    private WebElement addCourse;
+
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div/div[1]/span")
+
+    private WebElement addPatent;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[2]/div[1]/span")
     private WebElement addSecond;
 
 //______Education_____
@@ -85,6 +91,8 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
     private WebElement positionsuggestFirst;
     @FindBy(xpath="//div[3]/div/div/div/div/div/input")
     private WebElement courseName;
+    @FindBy(xpath="html/body/div[3]/div/div/div")
+    private WebElement courseNameSuggest;
     @FindBy(xpath="html/body/div[2]/div/div[2]/div/form/div[1]/div[4]/div/div[1]/div/div[1]/div/input")
     private WebElement courseLevel;
     @FindBy(xpath="html/body/div[3]/div/div/div[5]")
@@ -100,6 +108,10 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
     private WebElement dissTopic;
     @FindBy(xpath=".//*[@id='speciality']")
     private WebElement dissSpeciality;
+    @FindBy(xpath=".//div[2]/div/div[2]/div/form/div[1]/div[4]/div/div[1]/div/div[1]/div/input")
+    private WebElement dissDegree;
+    @FindBy(xpath=".//div[3]/div/div/div[3]")
+    private WebElement dissDegreeSuggest;
     @FindBy(xpath="html/body/div[2]/div/div[2]/div/form/div[1]/div[4]/div/div[1]/div/div[1]/div/input")
     private WebElement dissRate;
     @FindBy(xpath=".//*[@id='year']")
@@ -161,9 +173,17 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
 
 //new Item is present in the list
     @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/span")
+
     private WebElement listItem;
-    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[2]/div[2]/div/span")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[2]/div[2]/div/span")
     private WebElement listItemPub;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div[1]/div[2]/div/span")
+    private WebElement listItemDiss;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div/div[2]/div/span")
+    private WebElement listItemCourses;
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div/div[3]/div/div[1]/div/div[2]/div/span")
+    private WebElement listItemPatents;
+
 
 
     private boolean resultEducation = false;
@@ -189,6 +209,11 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
             String courseNameValue,
             String courseHoursValue,
             String courseSkillsValue,
+            String dissNameValue,
+            String dissSpesialtyValue,
+            String dissYearValue,
+            String dissConsultantValue,
+            String dissSkillsValue,
             String pubNameValue,
             String pubDateValue,
             String pubIsbnValue,
@@ -201,12 +226,14 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
             String patentOwnerValue,
             String patentCoworkerValue,
             String patentSkillsValue
-            ) throws Exception {
+
+    ) throws Exception {
         if (
         filloutResumeEducation(schoolNameValue, specialtyValue, fromSchoolDateValue, toSchoolDateValue,skillsSchoolValue) &&
         filloutResumeWork(companyNameValue, positionValue, fromDateValue, toDateValue, rateValue, skillsValue) &&
         filloutResumeCourses(courseNameValue, courseHoursValue, courseSkillsValue) &&
-        filloutResumeResearches(pubNameValue, pubDateValue, pubIsbnValue, pubPagesValue, pubCoworkerValue, pubSkillsValue) &&
+        filloutResumeResearches(pubNameValue, pubDateValue, pubIsbnValue, pubPagesValue, pubCoworkerValue, pubSkillsValue,
+                                dissNameValue, dissSpesialtyValue, dissYearValue, dissConsultantValue, dissSkillsValue ) &&
         filloutResumePatents(patentNameValue, patentNumberValue, patentDateValue, patentOwnerValue, patentCoworkerValue, patentSkillsValue))
             resultAll = true;
             Reporter.log("Resume sections were filled out = " + resultAll , true);
@@ -216,6 +243,8 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
     public boolean filloutResumeEducation (String schoolNameValue, String specialtyValue, String fromDateValue, String toDateValue, String skillsValue) throws Exception {
         resume.click();
         WaitForVisibility.isElementLoaded(addFirst);
+        WaitForVisibility.isElementClickable(addFirst);
+        Thread.sleep(3000);
         addFirst.click();
         category.click();
         fourthCategoryFromTop.click();
@@ -280,12 +309,15 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
 
     public boolean filloutResumeCourses (String courseNameValue, String courseHoursValue, String courseSkillsValue) throws Exception {
         courses.click();
-        addFirst.click();
+        Thread.sleep(2000);
+        WaitForVisibility.isElementLoaded(addCourse);
+        addCourse.click();
         positionCourse.click();
         Reporter.log("Set position name = " + positionsuggestFirst.getAttribute("value"), true);
         positionsuggestFirst.click();
         courseName.clear();
         courseName.sendKeys(courseNameValue);
+        courseNameSuggest.click();
         Reporter.log("Set course name = " + courseName.getAttribute("value"), true);
         courseLevel.click();
         Reporter.log("Set course level = " + courseLevelSuggest.getText(), true);
@@ -294,20 +326,45 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         courseHours.sendKeys(courseHoursValue);
         Reporter.log("Set course hours = " + courseHours.getAttribute("value"), true);
         skillsCourse.sendKeys(courseSkillsValue);
+        Thread.sleep(1000);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-        if (listItem.isDisplayed()){
+        if (listItemCourses.isDisplayed()){
             resultCourses=true;
         }
         return resultCourses;
     }
 
-    public boolean filloutResumeResearches (String pubNameValue, String pubDateValue, String pubIsbnValue, String pubPagesValue, String pubCoworkerValue, String pubSkillsValue) throws Exception {
+    public boolean filloutResumeResearches (String pubNameValue, String pubDateValue, String pubIsbnValue, String pubPagesValue, String pubCoworkerValue, String pubSkillsValue,
+                                            String dissNameValue, String dissSpesialtyValue, String dissYearValue, String dissConsultantValue, String dissSkillsValue) throws Exception {
         researches.click();
+//dissertation
+        WaitForVisibility.isElementLoaded(addFirst);
+        Thread.sleep(2000);
+        addFirst.click();
+        dissTopic.sendKeys(dissNameValue);
+        dissSpeciality.sendKeys(dissSpesialtyValue);
+        dissDegree.click();
+        WaitForVisibility.isElementLoaded(dissDegreeSuggest);
+        dissDegreeSuggest.click();
+        dissYear.sendKeys(dissYearValue);
+        dissConsultant.sendKeys(dissConsultantValue);
+        dissConsultantSuggest.click();
+        skillsDiss.sendKeys(dissSkillsValue);
+        Thread.sleep(1000);
+        if (skillsSuggest.isDisplayed()){
+            skillsSuggest.click();
+        }
+        buttonSubmit.click();
+        WaitForVisibility.isElementLoaded(listItemDiss);
+        if (listItemDiss.isDisplayed()){
+            resultResearches=true;
+        }
+//publication
         addSecond.click();
         pubType.click();
         pubTypeSuggest.click();
@@ -332,8 +389,12 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
 
         pubCoworkers.click();
         pubCoworkers.sendKeys(pubCoworkerValue);
-        pubCoworkersSuggest.click();
+        Thread.sleep(1000);
+        if (pubCoworkersSuggest.isDisplayed()){
+            pubCoworkersSuggest.click();
+        }
         skillsPub.sendKeys(pubSkillsValue);
+        Thread.sleep(1000);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -342,13 +403,16 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
         if (listItemPub.isDisplayed()){
             resultResearches=true;
+        } else {
+            resultResearches=false;
         }
         return resultResearches;
     }
 
     public boolean filloutResumePatents (String patentNameValue, String patentNumberValue, String patentDateValue, String patentOwnerValue, String patentCoworkerValue, String patentSkillsValue) throws Exception {
         patents.click();
-        addFirst.click();
+        Thread.sleep(3000);
+        addPatent.click();
         patentName.clear();
         patentName.sendKeys(patentNameValue);
         Reporter.log("Set patent name = " + patentName.getAttribute("value"), true);
@@ -364,13 +428,14 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         Thread.sleep(1000);
         patentCoworkersSuggest.click();
         skillsPatent.sendKeys(patentSkillsValue);
+        Thread.sleep(1000);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
         buttonSubmit.click();
         Reporter.log("Click on submit", true);
         Thread.sleep(1000);
-        if (listItem.isDisplayed()){
+        if (listItemPatents.isDisplayed()){
             resultPatents=true;
         }
         return resultPatents;

@@ -38,7 +38,7 @@ public class PositionScreen extends AbstractScreen {
     @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[2]/div/div/div[2]/a")
     private WebElement positionRequirements;
 
-    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[3]/div/div[1]/div/span")
+    @FindBy(xpath=".//*[@id='root']/div/div[1]/div[2]/div/div[3]/div/div[1]/div/div[1]/div/span")
     private WebElement positionReqAdd;
 
     @FindBy(xpath="html/body/div[3]/div/div[2]/div/form/div[1]/div/div[2]/div/div/div[1]/div/input")
@@ -74,9 +74,13 @@ public class PositionScreen extends AbstractScreen {
         Reporter.log("Filled Position with value = " + positionName.getAttribute("value"), true);
         String value = positionName.getAttribute("value");
         positionDivision.sendKeys(pDiv);
-        positionSuggest.click();
+        if (positionSuggest.isDisplayed()){
+            positionSuggest.click();
+        }
+
         Reporter.log("Filled Position division with value = " + positionDivision.getAttribute("value"), true);
         skills.sendKeys(pSkills);
+        Thread.sleep(2000);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -94,9 +98,11 @@ public class PositionScreen extends AbstractScreen {
 
     public boolean addRequirements(String pSkills) throws Exception{
         positionRequirements.click();
+        WaitForVisibility.isElementLoaded(positionReqAdd);
         positionReqAdd.click();
         Reporter.log("Clicked on Add new skill-requirement to position", true);
         positionReqInput.sendKeys(pSkills);
+        Thread.sleep(3000);
         if (positionSkillsSuggest.isDisplayed()){
             positionSkillsSuggest.click();
         }
@@ -106,13 +112,12 @@ public class PositionScreen extends AbstractScreen {
             resultNewSkill = true;
             Reporter.log("New skill was  added to position = " + resultNewSkill, true);
         }
-
         Thread.sleep(2000);
         candidatesLink.click();
         Thread.sleep(3000);
         if (Integer.parseInt(candidatesNumber.getText().substring(0,1))>0){
             resultCandidatesFound=true;
-            Reporter.log("Candidates number = " + candidatesNumber.getText().substring(0,1), true);
+            Reporter.log("Candidates number = " + candidatesNumber.getText().substring(0,2), true);
         }
 
         return resultCandidatesFound;

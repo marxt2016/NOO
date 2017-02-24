@@ -45,7 +45,8 @@ public class Steps {
 
     public static boolean fillOutResumeStep() throws Exception{
         StudentsStaffDetailScreen resume = new StudentsStaffDetailScreen();
-        return resume.filloutResume(allPersons.get("staff").get(4),
+        return resume.filloutResume(
+                allPersons.get("staff").get(4),
                 allPersons.get("staff").get(5),
                 allPersons.get("staff").get(6),
                 allPersons.get("staff").get(7),
@@ -59,6 +60,11 @@ public class Steps {
                 allPersons.get("staff").get(15),
                 allPersons.get("staff").get(16),
                 allPersons.get("staff").get(17),
+                allPersons.get("staff").get(18),
+                allPersons.get("staff").get(19),
+                allPersons.get("staff").get(20),
+                allPersons.get("staff").get(21),
+                allPersons.get("staff").get(22),
                 allPersons.get("staff").get(23),
                 allPersons.get("staff").get(24),
                 allPersons.get("staff").get(25),
@@ -71,6 +77,7 @@ public class Steps {
                 allPersons.get("staff").get(32),
                 allPersons.get("staff").get(33),
                 allPersons.get("staff").get(34)
+
                 );
     }
 

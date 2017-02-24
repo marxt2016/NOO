@@ -62,7 +62,7 @@ public class CreateInstancesPositiveSuite {
         Steps.clickOnStudents();
         Steps.createPerson("student");
         Assert.assertTrue(Steps.fillOutResumeStep());
-        Thread.sleep(1000);
+
 
     }
 
@@ -71,7 +71,7 @@ public class CreateInstancesPositiveSuite {
         //test validates position is created with a requirement for candidates
         Steps.loginTo();
         Assert.assertTrue(Steps.fillOutPositionStep());
-        Thread.sleep(1000);
+
 
     }
 

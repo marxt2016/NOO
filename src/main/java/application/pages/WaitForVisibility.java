@@ -15,4 +15,10 @@ public class WaitForVisibility {
         WebElement e = wait.until(ExpectedConditions.visibilityOf(elementToBeLoaded));
 
     }
+
+    public static void isElementClickable(WebElement elementToBeLoaded) {
+        WebDriverWait wait = new WebDriverWait(Driver.getInstance(), 25);
+        WebElement e = wait.until(ExpectedConditions.elementToBeClickable(elementToBeLoaded));
+
+    }
 }

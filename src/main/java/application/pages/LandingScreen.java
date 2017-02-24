@@ -102,7 +102,7 @@ public class LandingScreen extends AbstractScreen {
             result = true;
             Reporter.log("List contains new item = " + value, true);
             Driver.getInstance().findElement(By.partialLinkText(value)).click();
-            Driver.getInstance().findElement(By.partialLinkText(value)).click();
+
         }else{Reporter.log("New item wasn't found", true);}
         return result;
 

@@ -21,7 +21,7 @@
 
 		<classes>
 			<class name="tests.CreateInstancesPositiveSuite"/>
-			<!--<class name="tests.LoginNegativeSuite"/>-->
+			<class name="tests.LoginNegativeSuite"/>
 		</classes>
 	</test>
 
