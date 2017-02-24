@@ -71,6 +71,10 @@ public class PositionScreen extends AbstractScreen {
 
     public boolean fillOutPositionDetails (String pName, String pDiv, String pSkills) throws Exception {
         positionName.sendKeys(pName +Double.toString(Math.random()).substring(1,5));
+        if (positionName.getAttribute("value").length()<1){
+            positionName.sendKeys(pName +Double.toString(Math.random()).substring(1,5));
+        }
+        Thread.sleep(1000);
         Reporter.log("Filled Position with value = " + positionName.getAttribute("value"), true);
         String value = positionName.getAttribute("value");
         positionDivision.sendKeys(pDiv);

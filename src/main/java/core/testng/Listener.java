@@ -40,12 +40,13 @@ public class Listener extends TestListenerAdapter implements ISuiteListener  {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-
+        Reporter.log("FAILED", true);
         try {
             File scrFile = ((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.FILE);
-            File file = new File("test-output/"+iTestResult.getName()+".jpg");
+            File file = new File("target/surefire-reports/"+iTestResult.getName()+".jpg");
             FileUtils.copyFile(scrFile, file);
-            Reporter.log("<a href='"+ file.getName()+"'> <img src='"+file.getName()+"' height='100' width='100'/> </a>");
+            Reporter.log("<a href='"+ file.getAbsolutePath().substring(41)+"'> <img src='"+file.getAbsolutePath().substring(41)+"' height='500' width='700'/> </a>");
+
         } catch (IOException e1) {
             e1.printStackTrace();
         }

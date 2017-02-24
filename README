@@ -6,7 +6,7 @@ http://www.mkyong.com/maven/how-to-install-maven-in-windows/
 http://maven.apache.org/guides/getting-started/windows-prerequisites.html
 2. Save project folder on the local drive.
 3. For Windows: open cmd line from maven directory, for example  D:\maven\apache-maven-3.3.9\bin
-4. Run test suite from this location, for example  mvn test -f D:\workspace\paypal
+4. Run test suite from this location, for example  mvn test -f D:\workspace\noo
 
 Project output files are located in the target folder.
 Report can be found in the surefire-reports folder->emaible-report.html

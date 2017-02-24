@@ -295,6 +295,7 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         rate.sendKeys(rateValue);
         Reporter.log("Set rate = " + rate.getAttribute("value"), true);
         skills.sendKeys(skillsValue);
+        Thread.sleep(1000);
         if (skillsSuggest.isDisplayed()){
             skillsSuggest.click();
         }
@@ -353,7 +354,11 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         dissDegreeSuggest.click();
         dissYear.sendKeys(dissYearValue);
         dissConsultant.sendKeys(dissConsultantValue);
-        dissConsultantSuggest.click();
+        Thread.sleep(1000);
+        if (dissConsultantSuggest.isDisplayed()){
+            dissConsultantSuggest.click();
+        }
+
         skillsDiss.sendKeys(dissSkillsValue);
         Thread.sleep(1000);
         if (skillsSuggest.isDisplayed()){
@@ -383,10 +388,11 @@ public class StudentsStaffDetailScreen extends AbstractScreen {
         pubLanguages.click();
         pubLanguagesSuggest1.click();
         pubLanguagesSuggest2.click();
+        Thread.sleep(1000);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_TAB);
-
+        Thread.sleep(1000);
         pubCoworkers.click();
         pubCoworkers.sendKeys(pubCoworkerValue);
         Thread.sleep(1000);
